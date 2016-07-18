@@ -16,6 +16,7 @@
 #include <utility> // make_pair, pair
 #include <vector>  // vector
 #include <functional>
+#include <iostream>
 
 
 using namespace std;
@@ -33,9 +34,9 @@ class Graph {
         typedef int vertex_descriptor;                                        // fix!
         typedef pair<vertex_descriptor,vertex_descriptor> edge_descriptor;    // fix!
 
-        typedef vector<vertex_descriptor>::iterator vertex_iterator;          // fix!
-        typedef vector<edge_descriptor>  ::iterator edge_iterator;            // fix!
-        typedef vector<vertex_descriptor>::iterator adjacency_iterator;       // fix!
+        typedef vector<vertex_descriptor>::const_iterator vertex_iterator;          // fix!
+        typedef vector<edge_descriptor>  ::const_iterator edge_iterator;            // fix!
+        typedef vector<vertex_descriptor>::const_iterator adjacency_iterator;       // fix!
 
         typedef std::size_t vertices_size_type;
         typedef std::size_t edges_size_type;
@@ -50,12 +51,25 @@ class Graph {
          */
         friend std::pair<edge_descriptor, bool> add_edge (vertex_descriptor u, vertex_descriptor v, Graph& g) {
             // <your code>
-            edge_descriptor ed = make_pair(u,v);
-            pair<adjacency_iterator, bool> x = g.graph[u].insert(v);
-            bool            b  = x.second;
-            if(b)
-                g.m.push_back(ed);
-            return std::make_pair(ed, b);}
+            edge_descriptor ed = std::make_pair(u,v);
+            bool to_be_added = true;                            //do we need to add edge (if duplicate, no. if first time, yes) default we assume yes
+            bool added = false;                                 //was the edge added, be defaul we say no
+            vector<vertex_descriptor> adj_list = g.graph[u];
+            auto b = adj_list.begin();                          //beginning of u's vector
+            auto e = adj_list.end();                            //end of u's vector
+            while(b != e)
+            {
+                if(*b == v)                                     //is member equal to v
+                    to_be_added = false;                        //edge already exist so lets not add another in later
+                ++b;
+            }                                         
+            if(to_be_added)                                     //ed needs to be added
+            {
+                g.graph[u].push_back(v);                        //add v to u's adjacency list
+                g.m.push_back(ed);                              //add ed to the vector of edges in g
+                added = true;
+            }                                                    
+            return std::make_pair(ed, added);}
 
         // ----------
         // add_vertex
@@ -93,8 +107,9 @@ class Graph {
          */
         friend std::pair<edge_descriptor, bool> edge (vertex_descriptor u, vertex_descriptor v, const Graph& g) {
             // <your code>
-            edge_descriptor ed = make_pair(u,v);
-            bool            b  = find(g.m.begin(), g.m.end(), ed) != g.m.end();
+            edge_descriptor ed = std::make_pair(u,v);                   
+            auto it = find(g.m.begin(), g.m.end(), ed);                 //is there edge ed already in graph
+            bool            b  =  (it != g.m.end());                    //find will return the end() if ed didnt exist
             return std::make_pair(ed, b);}
 
         // -----
@@ -203,7 +218,7 @@ class Graph {
         bool valid () const 
         {
             // <your code>
-            if(g.size() > v.size())
+            if(graph.size() > n.size())
                 return false;
             return true;
         }
