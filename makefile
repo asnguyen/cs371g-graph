@@ -1,15 +1,13 @@
 # http://stackoverflow.com/questions/31176997/what-does-clang-check-do-without-analyze-option
 
-FILES :=                          \
-    Graph.h                       \
-    Graph.log                     \
-    html                          \
-    TestGraph.c++                 \
-    TestGraph.out
-
-# uncomment these:
-#    graph-tests/EID-TestGraph.c++ \
-#    graph-tests/EID-TestGraph.out \
+FILES :=                             \
+    Graph.h                          \
+    Graph.log                        \
+    html                             \
+    TestGraph.c++                    \
+    TestGraph.out				     \
+    graph-tests/asn579-TestGraph.c++ \
+    graph-tests/asn579-TestGraph.out \
 
 CXXFLAGS := -pedantic -std=c++11 -Wall
 LDFLAGS  := -lgtest -lgtest_main -pthread
