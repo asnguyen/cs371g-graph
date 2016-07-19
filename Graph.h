@@ -107,10 +107,17 @@ class Graph {
          */
         friend std::pair<edge_descriptor, bool> edge (vertex_descriptor u, vertex_descriptor v, const Graph& g) {
             // <your code>
-            edge_descriptor ed = std::make_pair(u,v);                   
-            auto it = find(g.m.begin(), g.m.end(), ed);                 //is there edge ed already in graph
-            bool            b  =  (it != g.m.end());                    //find will return the end() if ed didnt exist
-            return std::make_pair(ed, b);}
+            edge_descriptor ed = std::make_pair(u,v);
+            bool exist = false;
+            auto b = g.m.begin();
+            auto e = g.m.end();
+            while(b!=e)
+            {
+                if(*b==ed)
+                    exist=true;
+                ++b;
+            }                  
+            return std::make_pair(ed, exist);}
 
         // -----
         // edges
