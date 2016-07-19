@@ -1,0 +1,47 @@
+commit c533645c07381bd683aaacb6397f938230e7fe2f
+Author: Anthony Nguyen <anthony@cs.utexas.edu>
+Date:   Mon Jul 18 20:38:04 2016 -0500
+
+    commented code
+
+commit 50a5b5386a0b4a52285e4e99cb1dbd5b7310e4c5
+Author: Anthony Nguyen <anthony@cs.utexas.edu>
+Date:   Mon Jul 18 20:05:26 2016 -0500
+
+    written more unit test and passed them all
+
+commit 06f16935859bf5107e44a7b594d566350fd75960
+Author: Anthony Nguyen <anthony@cs.utexas.edu>
+Date:   Mon Jul 18 18:55:06 2016 -0500
+
+    tested implementaion. passed all starting unit tests
+
+commit 2275b0b0fabb79ec74012a0003c231f716d2eefe
+Author: Nguyen <asn579@wireless-10-145-135-33.public.utexas.edu>
+Date:   Mon Jul 18 15:55:16 2016 -0500
+
+    initial implementation. Not tested yet
+
+commit a293dfae5eff56d72ffc5e96cbbbb174fb1751e3
+Author: asnguyen <asnguyen@users.noreply.github.com>
+Date:   Sun Jul 17 14:49:23 2016 -0500
+
+    create .travis.yml file
+
+commit fa442dbb975f95e1de584fd2ebbfbed2d6de8435
+Author: asnguyen <asnguyen@users.noreply.github.com>
+Date:   Sun Jul 17 14:46:09 2016 -0500
+
+    files copied from cs371g repo (project start)
+
+commit 815d59a2c1027bd095cc56bb6cc4a26f3e40d93b
+Author: asnguyen <asnguyen@users.noreply.github.com>
+Date:   Sun Jul 17 14:42:35 2016 -0500
+
+    update gitignore to allow .out files
+
+commit ac436656626650da5ce4589f875bc94f81c08bf9
+Author: asnguyen <asnguyen@users.noreply.github.com>
+Date:   Sun Jul 17 14:41:46 2016 -0500
+
+    Initial commit
